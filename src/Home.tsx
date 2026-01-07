@@ -1,10 +1,9 @@
 import React, { useState } from 'react';
 import { Helmet } from 'react-helmet';
-import { TrendingUp, TrendingDown, Shield, Zap, Users, BarChart3, Globe, ArrowRight, Star, DollarSign, Activity, Sparkles, Lock, Clock, ChevronRight, Eye, Wallet, CreditCard } from 'lucide-react';
-import TradingViewChart from '../components/TradingViewChart';
+import { TrendingUp, TrendingDown, Shield, Zap, Users, BarChart3, Globe, ArrowRight, DollarSign, Activity, Sparkles, Lock, Clock, ChevronRight, Eye, Wallet, CreditCard } from 'lucide-react';
 
 const IoMarketsCom: React.FC = () => {
-  const [selectedPair, setSelectedPair] = useState('BTC/USDT');
+  const [selectedPair, _setSelectedPair] = useState('BTC/USDT');
 
   // Mock market data
   const topMarkets = [
@@ -232,7 +231,7 @@ const IoMarketsCom: React.FC = () => {
               <button className="text-gray-400 hover:text-white font-medium pb-2">Recent Trades</button>
             </div>
             <div style={{ height: "600px", width: "100%" }}>
-              <TradingViewChart height={600} />
+              <div className="h-[600px] bg-gray-800 rounded-lg flex items-center justify-center text-gray-400">Trading Chart Coming Soon</div>
             </div>
           </div>
         </div>
