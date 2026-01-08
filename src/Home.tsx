@@ -226,16 +226,17 @@ const IoMarketsCom: React.FC = () => {
 
         {/* Scroll indicator */}
         <motion.div
-          className="absolute bottom-8 left-1/2 -translate-x-1/2"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          transition={{ delay: 1.2, duration: 0.8 }}
+          transition={{ delay: 1 }}
+          className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-3 z-10"
         >
-          <div className="w-6 h-10 border-2 border-orange-400/30 rounded-full flex justify-center">
+          <span className="text-sm font-medium text-gray-400">Scroll to explore</span>
+          <div className="w-7 h-12 rounded-full border-2 border-[#F97316]/60 flex justify-center pt-2 shadow-lg shadow-[#F97316]/20">
             <motion.div
-              className="w-1.5 h-3 bg-orange-400/50 rounded-full mt-2"
-              animate={{ y: [0, 12, 0] }}
-              transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
+              animate={{ y: [0, 10, 0] }}
+              transition={{ duration: 1.5, repeat: Infinity }}
+              className="w-2 h-2 rounded-full bg-[#FB923C]"
             />
           </div>
         </motion.div>
