@@ -111,22 +111,22 @@
   }
 }
 
-/* Hero orb effect - multi-color dynamic */
+/* Hero orb effect - multi-color dynamic VIBRANT */
 .orb-hero {
-  opacity: 0.12;
-  filter: blur(120px);
+  opacity: 0.4;
+  filter: blur(90px);
   border-radius: 50%;
-  animation: orb-hero-pulse 10s ease-in-out infinite;
+  animation: orb-hero-pulse 8s ease-in-out infinite;
 }
 
 @keyframes orb-hero-pulse {
   0%, 100% {
-    transform: scale(1);
-    opacity: 0.1;
+    transform: scale(1) translateY(0);
+    opacity: 0.35;
   }
   50% {
-    transform: scale(1.2);
-    opacity: 0.18;
+    transform: scale(1.15) translateY(-15px);
+    opacity: 0.5;
   }
 }
 

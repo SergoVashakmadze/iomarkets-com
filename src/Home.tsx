@@ -3,23 +3,23 @@ import { Helmet } from 'react-helmet';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { TrendingUp, TrendingDown, Shield, Zap, Users, BarChart3, Globe, ArrowRight, DollarSign, Activity, Lock, Clock, ChevronRight, Eye, Wallet, CreditCard } from 'lucide-react';
 
-// Floating elements component for visual interest
+// Floating elements component for visual interest - VIBRANT
 const FloatingElements: React.FC = () => (
   <div className="absolute inset-0 overflow-hidden pointer-events-none">
-    {/* Floating geometric shapes */}
-    <div className="absolute top-[15%] left-[8%] w-3 h-3 bg-orange-400/30 rounded-full float-elegant" style={{ animationDelay: '0s' }} />
-    <div className="absolute top-[25%] right-[12%] w-2 h-2 bg-amber-400/40 rounded-full float-medium" style={{ animationDelay: '1s' }} />
-    <div className="absolute top-[45%] left-[5%] w-4 h-4 bg-yellow-400/20 rounded-full float-fast" style={{ animationDelay: '2s' }} />
-    <div className="absolute bottom-[30%] right-[8%] w-2.5 h-2.5 bg-red-400/30 rounded-full float-elegant" style={{ animationDelay: '0.5s' }} />
-    <div className="absolute bottom-[20%] left-[15%] w-2 h-2 bg-orange-300/25 rounded-full float-medium" style={{ animationDelay: '1.5s' }} />
+    {/* Floating geometric shapes - VIBRANT */}
+    <div className="absolute top-[15%] left-[8%] w-3 h-3 bg-orange-400/50 rounded-full float-elegant" style={{ animationDelay: '0s' }} />
+    <div className="absolute top-[25%] right-[12%] w-2 h-2 bg-amber-400/50 rounded-full float-medium" style={{ animationDelay: '1s' }} />
+    <div className="absolute top-[45%] left-[5%] w-4 h-4 bg-yellow-400/45 rounded-full float-fast" style={{ animationDelay: '2s' }} />
+    <div className="absolute bottom-[30%] right-[8%] w-2.5 h-2.5 bg-red-400/50 rounded-full float-elegant" style={{ animationDelay: '0.5s' }} />
+    <div className="absolute bottom-[20%] left-[15%] w-2 h-2 bg-orange-300/45 rounded-full float-medium" style={{ animationDelay: '1.5s' }} />
 
-    {/* Floating rings */}
-    <div className="absolute top-[20%] right-[20%] w-16 h-16 border border-orange-500/20 rounded-full float-elegant" style={{ animationDelay: '0.3s' }} />
-    <div className="absolute bottom-[25%] left-[10%] w-12 h-12 border border-amber-500/15 rounded-full float-medium" style={{ animationDelay: '0.8s' }} />
+    {/* Floating rings - VIBRANT */}
+    <div className="absolute top-[20%] right-[20%] w-16 h-16 border-2 border-orange-500/40 rounded-full float-elegant" style={{ animationDelay: '0.3s' }} />
+    <div className="absolute bottom-[25%] left-[10%] w-12 h-12 border-2 border-amber-500/35 rounded-full float-medium" style={{ animationDelay: '0.8s' }} />
 
-    {/* Subtle gradient orbs */}
-    <div className="absolute top-[10%] left-[20%] w-32 h-32 bg-gradient-to-br from-orange-500/10 to-transparent rounded-full blur-2xl float-elegant" />
-    <div className="absolute bottom-[15%] right-[15%] w-24 h-24 bg-gradient-to-br from-amber-500/10 to-transparent rounded-full blur-2xl float-medium" />
+    {/* Vibrant gradient orbs */}
+    <div className="absolute top-[10%] left-[20%] w-32 h-32 bg-gradient-to-br from-orange-500/25 to-transparent rounded-full blur-2xl float-elegant" />
+    <div className="absolute bottom-[15%] right-[15%] w-24 h-24 bg-gradient-to-br from-amber-500/25 to-transparent rounded-full blur-2xl float-medium" />
   </div>
 );
 
