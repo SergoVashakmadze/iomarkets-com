@@ -1,35 +1,80 @@
 'use client';
 
-import { useEffect, useState } from 'react';
-
-declare global {
-  namespace JSX {
-    interface IntrinsicElements {
-      'tv-ticker-tape': React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement> & {
-        symbols?: string;
-        'hide-chart'?: boolean;
-        'item-size'?: string;
-      }, HTMLElement>;
-    }
-  }
-}
+import { useEffect, useRef, useState } from 'react';
 
 export function TickerTape() {
   const [mounted, setMounted] = useState(false);
+  const widgetRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    const existingScript = document.querySelector('script[src*="tv-ticker-tape.js"]');
-    if (!existingScript) {
-      const script = document.createElement('script');
-      script.type = 'module';
-      script.src = 'https://widgets.tradingview-widget.com/w/en/tv-ticker-tape.js';
-      document.head.appendChild(script);
-    }
     setMounted(true);
   }, []);
 
+  useEffect(() => {
+    if (!mounted || !widgetRef.current) return;
+
+    // Clear any existing content
+    widgetRef.current.innerHTML = '';
+
+    // Create the widget container div
+    const widgetContainer = document.createElement('div');
+    widgetContainer.className = 'tradingview-widget-container__widget';
+
+    // Create and configure the script
+    const script = document.createElement('script');
+    script.src = 'https://s3.tradingview.com/external-embedding/embed-widget-ticker-tape.js';
+    script.async = true;
+    script.type = 'text/javascript';
+    script.innerHTML = JSON.stringify({
+      symbols: [
+        { proName: 'FOREXCOM:SPXUSD', title: 'S&P 500' },
+        { proName: 'FOREXCOM:NSXUSD', title: 'Nasdaq 100' },
+        { proName: 'FOREXCOM:DJI', title: 'Dow Jones' },
+        { proName: 'FX:EURUSD', title: 'EUR/USD' },
+        { proName: 'BITSTAMP:BTCUSD', title: 'Bitcoin' },
+        { proName: 'BITSTAMP:ETHUSD', title: 'Ethereum' },
+        { proName: 'CMCMARKETS:GOLD', title: 'Gold' },
+      ],
+      showSymbolLogo: true,
+      isTransparent: true,
+      displayMode: 'adaptive',
+      colorTheme: 'dark',
+      locale: 'en',
+    });
+
+    // Append widget container then script
+    widgetRef.current.appendChild(widgetContainer);
+    widgetRef.current.appendChild(script);
+
+    return () => {
+      if (widgetRef.current) {
+        widgetRef.current.innerHTML = '';
+      }
+    };
+  }, [mounted]);
+
+  // Placeholder during SSR
+  if (!mounted) {
+    return (
+      <div
+        style={{
+          position: 'fixed',
+          top: 0,
+          left: 0,
+          right: 0,
+          height: '46px',
+          backgroundColor: '#131722',
+          borderBottom: '1px solid #2a3550',
+          zIndex: 60,
+        }}
+      />
+    );
+  }
+
   return (
     <div
+      ref={widgetRef}
+      className="tradingview-widget-container"
       style={{
         position: 'fixed',
         top: 0,
@@ -39,15 +84,8 @@ export function TickerTape() {
         backgroundColor: '#131722',
         borderBottom: '1px solid #2a3550',
         zIndex: 60,
-        overflow: 'hidden',
       }}
-    >
-      {mounted && (
-        <tv-ticker-tape
-          symbols="FOREXCOM:SPXUSD,FOREXCOM:NSXUSD,FOREXCOM:DJI,FX:EURUSD,BITSTAMP:BTCUSD,BITSTAMP:ETHUSD,CMCMARKETS:GOLD"
-        />
-      )}
-    </div>
+    />
   );
 }
 
